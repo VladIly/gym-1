@@ -11,12 +11,14 @@ public class Visitor {
     public Visitor() {} // Для Jackson
 
     public Visitor(String name, int age, Membership membership) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative.");
+        }
         this.name = name;
         this.age = age;
         this.membership = membership;
     }
 
-    // Бізнес-логіка: Додати запис про відвідування
     public void visitGym() {
         visitHistory.add(new Date().toString());
     }
@@ -25,7 +27,6 @@ public class Visitor {
         return visitHistory;
     }
 
-    // Геттери/Сеттери
     public String getName() { return name; }
     public int getAge() { return age; }
     public Membership getMembership() { return membership; }
@@ -49,6 +50,7 @@ public class Visitor {
 
     @Override
     public String toString() {
-        return name + ", вік: " + age + ", абонемент: " + membership.getType();
+        String membershipInfo = (membership != null) ? membership.getType() : "відсутній";
+        return name + ", вік: " + age + ", абонемент: " + membershipInfo;
     }
 }
