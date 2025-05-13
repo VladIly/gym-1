@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+
 public class Gym {
     private final List<Visitor> visitors = new ArrayList<>();
     private final List<Trainer> trainers = new ArrayList<>();

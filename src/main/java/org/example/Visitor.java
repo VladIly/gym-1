@@ -10,6 +10,7 @@ public class Visitor {
 
     public Visitor() {} // Для Jackson
 
+
     public Visitor(String name, int age, Membership membership) {
         if (age < 0) {
             throw new IllegalArgumentException("Age cannot be negative.");
